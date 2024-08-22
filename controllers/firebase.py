@@ -38,8 +38,9 @@ async def register_user_firebase(user: UserRegister):
         try:
             cursor.execute(
                 "EXEC ecommerce.SaveUserEmailAndName @correo_electronico = ?, @nombre = ?",
+                user.email,
                 user.name,
-                user.email
+                
             )
             conn.commit()
             return {
